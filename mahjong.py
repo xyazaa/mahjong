@@ -89,13 +89,13 @@ def sortHand(hand, open):
     return groups
 
 
-def scoreHand(melds, dora, riichi, tsuron, open, dealer):
+def scoreHand(melds, dora, riichi, tsuron, open, seat):
     han=0
     fu=0
         
     for m in melds:
         for t in m:
-            if t == dora:
+            if t in dora:
                 han += 1
 
 print(sortHand(example3, 1))
