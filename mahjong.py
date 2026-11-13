@@ -1,4 +1,7 @@
-#hand = [s1,s2,s3,s4,s5.. we,ws,ww,wn, dr,dw,dg]
+# hand = [s1,s2,s3,s4,s5.. we,ws,ww,wn, dr,dw,dg]
+# FORMAT OF INPUT
+# tsuron = ['tsumo/ron', 'tile']
+# dora = [list of all dora including ura dora]
 
 suit = ["s", "m", "p"]
 honours= ["w", "d"]
@@ -9,7 +12,7 @@ example3 = ["m1", "m1", "m2", "m2", "m3", "m3", "p1", "p2", "p2", "p3","p3", "p4
 exampleKokushi = ["s1", "s9", "m1", "m9", "p1", "p9", "we", "ws", "ww", "wn", "dr", "dg", "dw", "dw"]
 
 
-def checkFormat(hand): #assert if the hand is a valid winning hand, ignoring if there is a valid yaku
+def checkFormat(hand): #assert if the hand has valid tiles, ignoring if there is a valid yaku
     if len(hand) < 14: #kan?
         return False
     
@@ -58,12 +61,10 @@ def sortHand(hand, open):
     groups = []
     look = 0
     hand.sort()
-    print(hand)
     while True:
         if look+2>len(hand): #if there still exist hand[look] and hand[look+1] there must be a double error
             break
         meld = hand[look:look+3]
-        print(meld)
         if not meld[0][0]==meld[1][0]:
             break
             #wrong hand, how can the first tile suit not be equal to the second?
@@ -92,10 +93,11 @@ def sortHand(hand, open):
 def scoreHand(melds, dora, riichi, tsuron, open, seat):
     han=0
     fu=0
-        
     for m in melds:
         for t in m:
             if t in dora:
                 han += 1
 
-print(sortHand(example3, 1))
+x = sortHand(example2, 1)
+x.sort(key=len, reverse=True)
+print(x)
